@@ -1,0 +1,406 @@
+Contabilidad 
+
+Estado y Balance validaciones 
+Revertir  bloqueo auto
+corregido Factura 
+
+30-01-17 1718
+1. Corrigiendo glosa de cuentas automaticas de ITF en comprobantes (Cheque)
+frmCompEdit
+2. Mejora en analitico adicional en nuevos A.A. en el Código Cta. de A.A. 
+el codigo facilite la ultima numeracion.
+frmPlanAddEdit
+
+06-02-2017 1554
+corregido recibos para cuando se genera comprobantes 
+se cargue los datos del recibo en el comprobante - solo el dataclear de frmcompedit
+
+16-02-2017 1714
+Reporte para Predial - libro Diario 
+frmLibroDiarioFind
+frmLibroDiarioDet
+clscomp
+
+22-02-2017 0900
+Inactivo en Plan 
+clsPlan ->  WhereFilterGet()  -> Case WhereFilters.EsAna
+frmBancoEdit -> cboPlanLoad
+frmRegRUCEdit -> cboPlanLoad
+frmCompDetEdit ->  cboPlanLoad
+frmCierreCuenta -> cboPlanLoad
+frmCierreCuentaSucCCO -> cboPlanLoad
+frmAjusteMoneda -> cboPlanLoad
+frmEmpresaPara -> Formcheck
+frmEmpresaPara -> DataSave 
+frmBancoEdit -> FormCheck
+frmBancoEdit -> DataSave
+
+frmRegRUCEdit -> DataSave
+frmRegRUCEdit -> FormCheck
+
+frmCompDetEdit -> FormCheck
+frmCompDetEdit -> cboplanload
+
+clsplan -> SelectFilters -> MultiComboBox
+
+frmPlanAddEdit->cboPlanLoad
+frmPlanAddEdit->_Load agregado TieneMovimiento? en Edicion para evitar problemas al cambiar la cuenta padre de los analiticos con movimiento
+frmPlanAddEdit->TieneMovimiento(ByVal lngPlanAddId As Long)
+
+clsPlan -> WhereFilters.TieneAnaAdd
+
+frmPlanAddEdit->DataSave
+frmPlanAddEdit->FormCheck
+
+clsplan -> WhereFilters.TipoPlanId
+frmChequeDetEdit -> cboPlanLoad()
+frmChequeDetEdit -> FormCheck
+
+frmChequeEdit -> cboPlanLoad()
+frmChequeEdit -> DataSave
+frmChequeEdit -> FormCheck
+
+clsComp -> selectFilters.Grid -> Estado a lado del Numero en la lista de comprobantes
+frmCompFecha -> grdMainInit
+frmComp -> grdMainInit
+
+23022017 1145 
+Se corrigio una excepcion de consulta en Bloqueo de comprobantes
+Se corrigio las dos ultimas columnas en lista de empresas
+
+23022017 1608
+Se corrigio una excepcion al actualizar Estado de Bloqueo / Desbloqueo de Comprobantes 
+en comprobantes con cheques
+
+15032017 1743
+Se corrigio una validacion en cierre de gestion por el tipo de cambio
+Se corrigio el orden que guarda el detalle de comprobante en Duplicar y REvertir 
+ 
+31032017 1728
+Se modifico el reporte movimiento de Actividades de Centro de costo por actividad, se agrego la opcion ver actividades con saldo cero.
+solicitado por ADONAI
+
+21042017 1805
+Se adiciono que el usuario pueda cambiar el orden al detalle del comprobante
+Se corrigio los Analiticos adicionales Inactivos no se visualizen en el registro de un comprobante
+
+25042017 1159
+Se agrego al Reporte de Balance a la impresion el dato Centro de Costo/ sucursal (en caso de que sea por CC/Suc)
+Se agrego al Reporte de Estado de Resultados a la impresion el dato Sucursal (en caso de que sea por CC/Suc)
+
+28042017 1823
+Reporte Corregido Analiticos add por Cuentas corregido cuentas con saldo cero 
+
+05052017 1721
+se agrego el reordenamiento a la impresion de comprobantes
+
+15052017 1009
+Cierre de Gestion y Cierre de Estado de resultados por Centro de Costo
+
+16052017 1840
+Validado Comprobante que no mueva las columnas de Ana Add y CCDet cuando no es operativo
+
+25052017 1729
+Actualizado frmEmpresaPara y clsEmpresaPara
+
+30052017 1543
+Se Corrigio en Comprobantes (frmCompEdit y frmCompDetEdit) en el metodo ComCentroCostoDetSaldo para validar Saldos de mov. Cierre o Apertura 
+que pueden tener montos en ambas columnas Debe y Haber de dif Actividades
+
+01062017 1710
+Movimiento de Analiticos Adicionales por Analiticos corregido.
+Reporte Corregido Analiticos add por Analiticos corregido cuentas con saldo cero 
+
+07062017 1849
+en clscompCentroCostodet y frmCompCentroCostoDet la palabra Analitico se cambio por Actividad
+Se valido que no se cambie el mes de la Fecha cuando la numeracion es por periodo
+Se corrigio el titulo del Reporte Balance General Consolidado
+Se corrigio en frmDataBaseOrg en el formulario del campo texto el nombre Base de datos 
+
+05072017 1703
+Flujo de Efectivo y Facturas con Descuento
+
+11072017 1502
+Se corrigio en el modulo de Contabilidad las sgtes observaciones:
+1.- En Plan de cuentas de Flujo de Efectivo el boton Adicionar cuentas.
+2.-  Asi como en Tesoreria en Contabilidad se agrego Glosa a las cuentas automaticas de Retención.
+3. (Cont) Cuando realiza la seleccion de cuenta por codigo y este al modificar el ultimo codigo me permite guardar como planid que no existe.
+
+20072017 1829
+1.	Se agrego la informacion de Gestiones en la impresión del reporte de Balance General Consolidado, y estado de Resultados Consolidado
+2.	En la Comparativa (Balance General Comparativo/Estado de Resultados Comparativo)se quito la opcion de Imprimir y se agrego la opcion de Exportar.
+3.	Al Exportar a excel el sistema facilitara al usuario consultandole si desea abrir el documento Excel.
+4.	En la opcion de Adicionar Base de Datos, se agrego por defecto en el texto Sevidor el servidor del sistema.
+
+01082017 1715
+frmCompEdit -> UpdateCompDetTemp ->   .Fecha = ToDate(dtpFecha.Value)
+frmCompFacturaEdit -> txtFacturaNro_LostFocus( -> If mboolAdding Or mboolEditing Then
+frmCompplanadd -> grdMain_MouseDown(
+
+frmplanedit - Validar que en una cuenta agrupadora se cree solo hijos analiticos o Cuentas de grupo
+frmRecibo - grdmaininit "RespaldoDes" en EstadoDes
+
+frmCompFacturaEdit -> FormShow()
+
+11092017 1129
+En el Diseño de Cheque es necesario que seleccione el campo “mes” y agregue en Tam. Max.
+Un numero: 
+En caso de que el mes es Marzo 
+                Si es 2 devuelve el formato "03" 
+                Si es 3 devuelve el formato "mar"
+                Otros numeros ya sea 0 o cualquier otro devolvera el literal "marzo".
+
+
+14092014 0852
+Se corrigió lo solicitado por el cliente sobre la impresión del dia en el cheque.
+cliente: el día le falta rellenar al lado izquierdo con cero 
+
+22092017 1001
+El eliminar un comprobante con numeracion ocurre cuando el grid no se actualiza, y el eliminar el comprobante consulta el dato del grid.
+
+26092017 1829
+Se actualizo el exe de contabilidad corrigiendo el problema reportado de las retenciones en las que Asume Proveedor en cuentas de tipo Banco - moneda Dolares aplicando ITF.
+Y ademas se aplicara la retencion en el cheque.
+
+25102017 1738
+Corregido (frmCompEdit)- En el Comprobante al guardar como pendiente y no salirse del formulario permite guardar nuevamente y crea el comprobante id 0 visible
+Se corrigio que el menu secundario en FActuras no permita Eliminar y/o Editar en una consulta a un comprobante esto ocurria cuando daba click derecho (mouse)
+Facturas Agrupadas menu secundario click derecho se corrigio lo mismo
+en facturas frmFactura el Botom Limpiar esta habilitado cuando se consulta una factura
+Reporte de estado de flujo de efectivo, se quito la opcion detallado y resumido se coloco por defecto nivel 2 
+se corrigio el reporte los montos.
+
+17112017 1807
+se modifico el balance general por mes se quito la columna total y se modifico el saldo por mes que traera desde el comienzo de la gestion hasta el mes indicado
+
+20112017 1648
+se corrigio el reporte de balance general por mes el libro mayor ordenar por fecha
+
+27112017 1547
+se corrigio la impresion de libro diario detallado de custom paper a printer default
+
+28112017 1201
+se corrigio el flujo de efectivo del ITF misma cuenta de banco misma sucursal
+
+14122017 1825
+Fecha Abierta
+
+04012018 0944
+Identity en Factura
+
+30012018 1547
+Se agrego a parametros Validar Saldos de Caja y Banco
+si el parametros esta habilitado en Registro de comprobantes validara que la cuenta
+de tipo caja o banco tenga saldos antes de guardar el comprobante.
+Se corrigio en creacion de cuentas Flujo efectivo se creen cuentas a partir de nivel 2
+
+26022018 1437
+Se corrigio el reporte Estado de Flujo de Efectivo - Efectivo Inicial 
+se agrego otra condicion en caso de que no exista gestion anterior 
+se mostrara los movimientos de Flujo de efectivo del asiento de apertura 
+
+14032018 0905
+Se Habilito Registrar Cheques en Transacciones de Contabilidad y se modifico el
+Reporte Libro de cheques y se modifico el reporte de Registrar Cheques
+
+15032018 1649
+Corregido Revertir de Contabilidad no debe revertir automaticos.
+
+23032018 1728
+Se corrigio en el reporte de Comprobantes (rptCompEdit) que se duplica la ultima cuenta porque 
+no se visualiza la cuenta Diferencia de Cambio: se cambio toDecimal a TodecimalCinco
+
+29032018 1639
+Se corrigio en el cierre de gestion por SucCCO.- la gestion de las Actividades 
+que se guarden los comprobantes de actividad con la nueva gestion.
+OBS(Los saldo de los Centro de Costo que pasan a la Nueva Gestión, sigue apuntando a la Gestión anterior
+
+27042018 0850
+Se valido en la consulta de los reportes de Libro IVA (SFV) y (NSF) no traer las facturas con Dosificaciones de Tipo DosificaVentaId = 6
+
+02052018 1054
+Se agrego en Tipo de Cambio: Nuevo por Rango y Importar 
+
+11052018 1013
+Se agrego MostrarAnaAdd en tblPlan: para que el usuario pueda seleccionar de cuales cuentas debe de mostrarse su Analitico Adicional en 
+Se Agrupo los Menus de Reportes de Balance y Estado de Resultados
+Se creoel reporte de Estado de resultados comparativo por Centro de Costo y la impresion de Estado De Resultado por Centro de Costo
+en el reporte estado de resultados se condiciono que si la cuenta dice mostrar Analitico Adicional se mostraran en este reporte.
+en Balance General se agrego  la opcion Mostrar Resultado y un campo Titulo para mostrar en la impresion de Balance.
+
+14052018 1044
+Se agrego el reporte Libro Mayor para analisis y Balance General para Analisis
+
+15052018 1608
+Se agrego el reporte Estado de Resultados por Actividades.
+
+16052018 1045
+Reporte Libro Mayor Detallado
+
+21052018 1816
+Se agrego Encabezado por Hoja a parametros de Documentos  y se valida este campo al imprimir comprobante en frmcompedit
+y F2 buscar en frmCompCentroCostoDetEdit 
+Se agrego el proceso Conciliar Diferencias en frmConciliaBanco 
+Se modifico el reporte de Conciliacion Bancaria
+
+22052018 1816
+Se hizo mejoras en Diferencias Conciliatorias 
+
+04062018 0911
+se aplico Listas para guardar cuentas automaticas con CC o Suc y asi generar las cuentas Automaticas por CC o Suc al codigo.
+
+20062018 1031
+se agrego al reporte Libro Mayor Detallado, el Analitico Adicional y su monto los demas datos se repetiran por cada Analitico de detalle
+
+26062018 1342
+Se corrigio el login de inicio cuando cierran el formulario frmLogin
+Se corrigio validarFecha con Nro Comprobante en FormCheck
+Se agrego el UpdateCompDetTemp en DataSave para Actualizar la Fecha en caso de que solo se cambie fecha y se guarde.
+Se corrigio el reporte Movimientos de analiticos Adicionales por Cuenta analiticos con saldo cero.
+
+28062018 1612
+Se agrego Actividad al reporte Libro Mayor Detallado
+
+14082018 1121
+Se aplico IVA al Descuento 
+
+23082018 1526
+Se corrigio Importar Tipo de CAmbio  UFV a cinco decimales
+
+30082018 1546
+Aplicar Iva a los descuentos de Factura se valido que solo aparezca el mensaje en Egresos o traspasos que no son ingresos
+Agregar check Combustible en Factura de compra 
+
+31082018 1642
+Se valido el estado del comprobante en frmLibroIva y frmLibroIvaNSF
+
+11092018 1818
+Se adiciono al versionador la clase clsFacturaPara
+
+18102018 1858
+Bitacora
+
+16112018 1826 - 19112018 1534
+Libro de Compras por Centro de Costos
+Reporte Balance General comparativo por Empresa y Centro de Conto, consolidado
+Reporte Estado de Resultado comparativo por Empresa y Centro de Conto
+Reporte de Retenciones por Centro de Costos
+Reporte de Movimiento de Centro de Costos por Actividad comparativo por Empresa
+
+se configuro servidor para que se guarde en memoria
+Se agrego a libro Mayor y libro mayor para analisis la opcion Ocultar Glosa Integracion
+
+Balance de Sumas y Saldos para Analisis para Bolland
+
+05122018 0853 - 05122018 1023
+Se valida que se seleccione Centro de Costo al crear Actividad 
+Se agrego Recargo a Factura y se valida Recargo + monto Factura con las cuentas al guardar comprobante
+se actualizo a Importar Base de Datos en Facturas Desceunto y Recargo
+Estado de Resultado por Actividad al imprimir que se muestre la actividad
+Se agrego impresion a Libro de Cheques
+En Balance de Sumas y Saldos para Analisis se modifico que tome la Fecha del intervalo entre la fecha Ini y la misma Fecha Gestion Anterior 
+Ingreso que se tome el signo contrario
+Patrimonio que se muestre por cada mes el saldo
+se corrigio que cuando una gestion no tiene saldo se tome la posicion sumando todos los meses de la gestion
+se cambio que la cuenta Ajuste e Inflacion por tenencia de Bienes sume siempre de la anterior gestion
+se agrego el Reporte Resumido a Balance de Sumas y Saldos
+Se agrego reordenar Numeracion de Comprobantes pero en modo oculto por el momento
+
+05122018 1732
+Subido al 2019
+
+12122018 1733
+Validar al cambiar la cuenta si tiene Facturas que no permita elinminar el usuario debe ir a la lista de facturas a eliminar sus facturas primero.
+Validar que sea Imposible editar factura computarizada
+Se quito el metodo isdeleted (en plan y analitico) cuando se elimina un Plan de cuenta, ya que ocasiona un mensaje de error invalid column name en base de datos donde no se creo el campo. 
+
+18122018 1128
+Se totalizo en los analiticos del reporte Estado de REsultados comparativo por centro de costo
+Se corrigio Sumas y Saldos para Analisis
+
+29012019 1522
+Se corrigio el error al Guardar un cambio en Valor de Impuestos  
+
+19032019 1224
+Se corrigio la validacion de fecha con el nro de comprobante
+
+27032019 1552
+en Libro Mayor Detallado se agregaron 4 columnas Fecha Registro, Usuario, Glosa, Periodo, se agrego un combo Moneda 
+Estado de Resultados comparativo por CC se agrego un texbox nro para seleccionar la cantidad de Centro de costo a mostrar por columna
+se agrego exporta a excel en Estado de Resultados comparativo por CC 
+la impresion solo aparecera cuando la cantidad de CC sea menor o igual a 5
+
+02072019 1555
+Se modifico en la lista de Actividades del comprobante, que se vean las actividades de cuentas que permiten Centro de costo.
+En el reporte Estado de Resultados por Mes se agrego que se muestren las cuentas con movimiento en el mes aunque el saldo general es cero.
+Se modifico el reporte movimiento de centro de costo comparativo Tomar el Id de centro de costo por columna que la Descripcion del centro de costo.
+
+10072019 1101
+Reporte de Flujo de efectivo Detallado se arreglo estaba con la apariencia del libro diario.
+
+22072019 1150
+Se corrigio Libro Mayor Detallado DATE por DATETIME
+
+10102019 1046
+Se agrego el reporte Balance de Suma y Saldos Comparativo por Empresas 
+se mejoro el Formulario configurador de Conexion
+se creo libro mayor comparativo por empresas
+Se agrego el reporte libro diario detallado y se modifico el anterior libro diario detallado el nombre a extendido
+Libro Diario General, Detallado y Extendido
+Disponibilidad Consolidado y Comparativo por Empresas
+Se agrego el reporte Balance de Suma y Saldos Comparativo por Centro de Costo y se incluyo la opcion AA
+en el reporte Balance de Suma y Saldos General se agrego el filtro Centro de Costo y se incluyo la opcion AA
+SE HIZO EL balance comparativo con AA pero se oculto porque esta en pruebas
+SE HIZO EL libro Mayor Comparativo Apilado pero se oculto porque esta en pruebas
+
+14112019 1701
+1*SE HIZO EL balance comparativo con AA pero se oculto porque esta en pruebas
+2*SE HIZO EL libro Mayor Comparativo Apilado pero se oculto porque esta en pruebas
+1. Incluir Analitico Adicional en Balance General comparativo por Empresa
+2. Libro Mayor Consolidado por empresas  (Consolidar por Cuentas)
+
+17122019 1815
+Se corrigio Reporte estado de resultado comparativo por cc se adiciono el CC Sin Definir - Genesis
+Se adiciono Incluir Analiticos Adicionales a estado de resultado comparativo por empresas - Krieger
+
+23012020 1703
+Se aumento a 400 el ancho de PlanDes en los cboPlanLoad
+Se volvio el tamaño del form a - 40 como era antes
+Se corrigio el diseño del formulario de algunos reportes para que el Tipo Asiento sea visible al desplegarse
+ 
+06022020 1442
+se actualizo Parametros de Empresa: DecimalCant, AplicarMedAlternativa, AplicarControlInv, AplicarDosificaVenta, Reportes sin Gestion, Repositorio
+se actualizo Dosificacion con los campos adicionados por Ventas, y se aplico mantener en memoria el detalle, 
+
+05032020 0836
+Se agrego Credito-Debito a Descuento de Facturas de Venta
+
+15052020 1803
+En Exportar Texto en detalle de Comprobante, se agrego que si es Egreso se toma la glosa como OTROSANTICIPOS - desarrollado para Memorial Park
+Agregar Parametro para validar Actividad y Analiticos - Solicitado por APAC
+
+23052020 1439
+Correccion al exportar el archivo SAP en la Glosa, la observacion era que  no permite que se repita la glosa por cada archivo a importar.
+Se corrigio agregando el nro de comprobante a la glosa
+
+04062020 1754
+Se corrigio el archivo SAP en la Glosa que diferencie de Otros Anticipos y Anticipos por medio del Concepto.
+
+09062020 1121
+lista de reportes actualizadas: que no se vean los movimientos de cuentas que no manejan centro de costo.
+Movimiento de Actividades de C.C. Por Centros de Costo
+Movimiento de Actividades de C.C. Por Actividad
+Libro Mayor Detallado
+
+26062020 0910
+Corregido reporte estado de flujo de efectivo reportado por ely, se corrigio al registrar nuevo comprobante de asiento de apertura validar registro de flujo de efectivo.
+Se cambio el nombre del parametro de Aplicar Reportes sin gestion por Aplicar Reportes sin gestion (Modulo Ventas)
+en asientos de apertura
+Corregido
+
+26062020 1821
+Se actualizo Poliza - campo Observacion en Contabilidad solicitado por Ely para Genesis
+
+22072020 1048
+Se agrego el form Provincia en Contabilidad para la Empresa Ubicar 
+y se actualizo Ciudad con Provincia
