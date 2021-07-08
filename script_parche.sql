@@ -124,3 +124,5 @@ UPDATE tblPlan
 SET
     PlanPadreId = 348
 WHERE PlanId BETWEEN 349 AND 353
+
+-- PATRIMONIO
