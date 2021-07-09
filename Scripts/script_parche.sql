@@ -7,6 +7,13 @@
 -- Trabajado en Base de datos CONDOBO>tblPlan
 -- Update rows in table 'tblPlan'
 
+-- Error en el Nivel 1, autoreferenciacion genera bucle y el sistema se cierra inesperadamente
+
+UPDATE tblPlan
+SET
+    PlanPadreId = 0
+WHERE Nivel = 1
+
 -- ACTIVO
 
 -- Error de nivel
@@ -107,6 +114,14 @@ SET
     PlanPadreId = 209
 WHERE PlanId = 210
 
+-- Error de orden
+
+-- Update rows in table 'tblPlan'
+UPDATE tblPlan
+SET
+    Orden = 1
+WHERE 1 = 1
+
 -- PASIVO
 
 -- Error de id en plan padre
@@ -131,5 +146,7 @@ SET
 WHERE PlanId BETWEEN 349 AND 353
 
 -- Error de orden
+
+
 
 -- PATRIMONIO
