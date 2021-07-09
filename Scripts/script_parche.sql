@@ -1,3 +1,8 @@
+-- Escritorio remoto
+
+-- DESKTOP-DJUVPST
+-- CGI/284******
+
 -- parche "Plan de cuentas"
 -- Trabajado en Base de datos CONDOBO>tblPlan
 -- Update rows in table 'tblPlan'
