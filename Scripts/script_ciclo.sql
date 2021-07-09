@@ -16,7 +16,7 @@ begin
 end
 go
 
-/*
+/* Resultado:
 Nivel: 1  Orden: 1  
 Nivel: 1  Orden: 2  
 Nivel: 1  Orden: 3  
