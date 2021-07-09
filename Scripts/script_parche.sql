@@ -4,11 +4,11 @@
 
 -- ACTIVO
 
--- Error de nivel y orden
+-- Error de nivel
 UPDATE tblPlan
 SET
     Orden = 4,
-    Nivel = 4
+    Nivel = 1
 WHERE PlanId = 199
 
 -- Error de id en plan padre
@@ -124,5 +124,7 @@ UPDATE tblPlan
 SET
     PlanPadreId = 348
 WHERE PlanId BETWEEN 349 AND 353
+
+-- Error de orden
 
 -- PATRIMONIO
